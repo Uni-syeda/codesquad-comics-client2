@@ -1,29 +1,27 @@
 import booksData from "../data/books";
-function Home() {
-    console.log(booksData[0])
+import React, { useState, useEffect } from "react";
+
+const Home = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    setBooks(booksData);
+  }, []);
+
   return (
     <div>
-      {/* Fun-home-card Section */}
-    <h1>Home Page</h1>
-      <div className="fun-home-card-border">
-        <div className="fun-home-background-color">
-          {booksData.map((book)=>(
-            <div>
+      <h2>Our Books</h2>
+      <ul>
+        {books.map((book) => (
+          <li key={book.id}>
+            {/* Display book details */}
             <h3>{book.title}</h3>
-            <img src={`/images/images/${book.image}`} alt={book.title} />
-            <p>
-              <span className="fun-home-card-bottom">Author:</span>{book.author}
-            </p>
-            <p>
-              <span className="fun-home-card-bottom">Rating:</span>{book.rating}
-            </p>
-            </div>
-          ))}  
-          
-          </div>
-        </div>
-      </div>
-
+            <p>{book.author}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
 export default Home;

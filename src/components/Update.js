@@ -1,20 +1,41 @@
+import React from "react";
+import booksData from "../data/books";
+import {useState , useEffect} from "react";
+
 function Update() {
-  const content = `synopsis value stored in database`;
-  return (
+  const id = booksData[0]._id;
+  const [book, setBooks] = useState({})
+  useEffect(()=>{
+    const newBook = booksData.find((book)=>book._id === id)
+    setBooks(newBook);
+  },[id])
+  const updateForm = (e) => {
+    e.preventDefault();
+    console.log("this method ran");
+    console.log(e.target.title.value);
+    console.log(e.target.author.value);
+    console.log(e.target.publisher.value);
+    console.log(e.target.genre.value);
+    console.log(e.target.pages.value);
+    console.log(e.target.rating.value);
+    console.log(e.target.synopsis.value);
+  };
+
+return (
     <div>
       {/* <!-- Form section--> */}
       <div className="content-box6">
         {/* <!-- <div class="content center"> --> */}
-        <form action="#">
+        <form action="#" onSubmit={updateForm}>
           <h2>UPDATE COMICS</h2>
-          <div classNamw="form-fields">
+          <div className="form-fields">
             <div>
               <label htmlFor="title">Title:</label>
               <input
                 type="text"
                 id="title"
                 name="title"
-                value="title value stored in the database"
+                value={book.title} required
               />
               <br />
               <br />
@@ -26,13 +47,13 @@ function Update() {
                 type="text"
                 id="author"
                 name="author"
-                value="author value stored in database"
+                value={book.author} required
               />
             </div>
 
             <div>
               <label htmlFor="publisher"> Publisher</label>
-              <select id="publisher" name="publisher">
+              <select id="publisher" name="publisher" value={book.publisher}>
                 <option selected value="database-value">
                   publisher value stored in the database
                 </option>
@@ -56,13 +77,13 @@ function Update() {
                 type="text"
                 id="genre"
                 name="genre"
-                value="genre data stored in the database"
+                value={book.genre} required
               />
             </div>
 
             <div>
               <label htmlFor="pages">Number of pages:</label>
-              <input type="number" id="pages" name="pages" value="255" />
+              <input type="number" id="pages" name="pages" value={book.pages} required />
               <br />
               <br />
             </div>
@@ -73,7 +94,7 @@ function Update() {
                 type="number"
                 id="rating"
                 name="rating"
-                value="rating stored in data base"
+                value={book.rating} required
               />
             </div>
 
@@ -81,11 +102,10 @@ function Update() {
               <label htmlFor="synopsis">Synopsis:</label>
 
               <textarea
-                defaultValue={content}
                 type="textarea"
                 id="synopsis"
                 name="synopsis"
-                placeholder="synopsis"
+                placeholder="synopsis" value={book.synopsis}
               />
             </div>
 

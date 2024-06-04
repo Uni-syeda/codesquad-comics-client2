@@ -1,19 +1,31 @@
+import React from "react";
 function Create(){
-    const content = `Synopsis:`;
+    const createForm = (e)=>{
+        e.preventDefault();
+        console.log("this method ran");
+        console.log(e.title.value);
+        console.log(e.author.value);
+        console.log(e.publisher.value);
+        console.log(e.genre.value);
+        console.log(e.pages.value);
+        console.log(e.rating.value);
+        console.log(e.synopsis.value);
+    };
     return (
         <div>
         <div className="content-box6">
       
-      <form action="#">
+      <form action="#" onSubmit={createForm}>
+
         <h2>CREATE NEW COMIC</h2>
         <div className="form-fields">
           <div>
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" name="title" placeholder="Title" />
+            <input type="text" id="title" name="title" placeholder="Title" required/>
           </div>
           <div>
             <label htmlFor="author">Author:</label>
-            <input type="text" id="author" name="author" placeholder="Author" />
+            <input type="text" id="author" name="author" placeholder="Author" required/>
           </div>
           <div>
             <label htmlFor="publisher"> Publisher:</label>
@@ -34,7 +46,7 @@ function Create(){
           </div>
           <div>
             <label htmlFor="genre">Genre:</label>
-            <input type="text" id="genre" name="genre" placeholder="Genre" />
+            <input type="text" id="genre" name="genre" placeholder="Genre" required/>
           </div>
           <div>
             <label HtmlFor="pages">Number of pages:</label>
@@ -42,17 +54,17 @@ function Create(){
               type="number"
               id="pages"
               name="pages"
-              placeholder="Number of pages"
+              placeholder="Number of pages" required
             />
           </div>
           <div>
             <label htmlFor="rating">Rating:</label>
-            <input type="number" id="rating" name="rating" min="0" max="5" />
+            <input type="number" id="rating" name="rating" min="0" max="5" required/>
           </div>
           <div>
             <label htmlFor="synopsis">Synopsis:</label>
             
-            <textarea defaultValue={content}
+            <textarea
               type="textarea"
               id="synopsis"
               name="synopsis"

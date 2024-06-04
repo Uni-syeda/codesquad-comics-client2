@@ -1,8 +1,9 @@
 import React from "react";
-const About = () => {
+const Header = (
+  {user,setUser}
+) => {
   return (
     <div>
-      <div>About</div>
       <header>
         <nav>
           {/* <!-- Navigation unordered lists--> */}
@@ -33,4 +34,4 @@ const About = () => {
     </div>
   );
 };
-export default About;
+export default Header;
